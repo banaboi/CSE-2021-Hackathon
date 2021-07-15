@@ -9,6 +9,7 @@ resource_fields = {
   'views': fields.Integer
 }
 
+# url/image ROUTE
 class Image(Resource):
   @marshal_with(resource_fields)
   def get(self, img_id):
@@ -18,18 +19,14 @@ class Image(Resource):
     return result
   
   def post(self, img_id):
-    print(1)
     args = img_post_args.parse_args()
-    # result = ImgModel.query.filter_by(id=img_id).first()
-    # print(2)
-    # if result:
-    #   abort(409, message="Image already exists")
+    result = ImgModel.query.filter_by(id=img_id).first()
+    print(2)
+    if result:
+      abort(409, message="Image already exists")
     image = ImgModel(id=img_id, name=args['name'], url=args['url'], views=args['views'])
-    print(3)
     db.session.add(image)
-    print(4)
     db.session.commit()
-    print(5)
     return {}, 200
 
   @marshal_with(resource_fields)

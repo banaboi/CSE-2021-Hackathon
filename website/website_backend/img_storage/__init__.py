@@ -7,8 +7,7 @@ api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
-db.create_all()
-
-from img_storage import routes
+from img_storage import routes, models
 
 api.add_resource(routes.Image, '/image/<string:img_id>')
+db.create_all()
