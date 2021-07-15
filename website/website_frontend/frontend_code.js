@@ -1,17 +1,17 @@
 console.log("Hello!")
 
 function doFunction() {
-  const data1 = {
-    "name": "Golden Retriever in a flower crown",
-    "url": "1",
-    "views": 1
-    }
+  // const data1 = {
+  //   "name": "Golden Retriever in a flower crown",
+  //   "url": "1",
+  //   "views": 1
+  //   }
   
-  const data2 = {
-    "name": "Hello There",
-    "url": "2",
-    "views": 100000000000
-    }
+  // const data2 = {
+  //   "name": "Hello There",
+  //   "url": "2",
+  //   "views": 100000000000
+  //   }
   
   const result = fetch(`http://127.0.0.1:5000/image/1`, {
         method: 'GET',

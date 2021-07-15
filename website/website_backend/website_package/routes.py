@@ -1,5 +1,5 @@
-from img_storage import db, api
-from img_storage.models import ImgModel, img_post_args, img_put_args
+from website_package import db, api
+from website_package.models import ImgModel, img_post_args, img_put_args
 from flask_restx import Api, Resource, abort, fields, marshal_with
 from os import system
 
@@ -47,5 +47,6 @@ class Image(Resource):
     
   def delete(self):
     # this is very bad, big nono, don't leave this in for production
-    system("rm database.db")
+    print("What")
+    system("rm ./database.db")
     return {}, 204

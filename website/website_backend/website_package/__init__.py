@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_restx import Api
 from flask_sqlalchemy import SQLAlchemy
-from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -17,7 +16,7 @@ CORS(app, origins=FRONTEND_URL, allow_headers=[
     supports_credentials=True)
 
 
-from img_storage import routes, models
+from website_package import routes, models
 
 api.add_resource(routes.Image, '/image/<string:img_id>')
 db.create_all()

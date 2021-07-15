@@ -1,4 +1,4 @@
-from img_storage import db
+from website_package import db
 from flask_restx import Api, Resource, reqparse, abort, fields, marshal_with
 
 
