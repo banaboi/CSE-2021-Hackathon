@@ -15,12 +15,16 @@ data2 = {
   }
 
 output = requests.post(f"{BASE_URL}/image/1", data=data1)
+print("Image one created")
+output = requests.post(f"{BASE_URL}/image/2", data=data1)
+print("Image two created")
+output = requests.get(f"{BASE_URL}/image/2")
 print(output.json())
 output = requests.get(f"{BASE_URL}/image/1")
 print(output.json())
-output = requests.put(f"{BASE_URL}/image/1", {"views":100000})
+output = requests.put(f"{BASE_URL}/image/1", {"views":5})
 print(output.json())
 output = requests.get(f"{BASE_URL}/image/1")
 print(output.json())
 
-# requests.delete(f"{BASE_URL}/image/")
+requests.delete(f"{BASE_URL}/image/")
