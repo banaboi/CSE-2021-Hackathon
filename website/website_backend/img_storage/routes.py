@@ -1,6 +1,6 @@
 from img_storage import db, api
 from img_storage.models import ImgModel, img_post_args, img_put_args
-from flask_restful import Api, Resource, abort, fields, marshal_with
+from flask_restx import Api, Resource, abort, fields, marshal_with
 
 resource_fields = {
   'id': fields.String,

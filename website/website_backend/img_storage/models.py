@@ -1,5 +1,5 @@
 from img_storage import db
-from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
+from flask_restx import Api, Resource, reqparse, abort, fields, marshal_with
 
 
 class ImgModel(db.Model):
