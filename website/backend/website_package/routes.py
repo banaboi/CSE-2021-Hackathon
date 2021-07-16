@@ -2,6 +2,7 @@ from website_package import db, api
 from website_package.models import ImgModel, img_post_args, img_put_args
 from flask_restx import Api, Resource, abort, fields, marshal_with
 from os import system
+from twilio.rest import Client
 
 # this in conjunction with the "@marsha_with" decorator allows the result of a 
 # db search to return a dictionary instead of random stuff
@@ -60,3 +61,18 @@ class Image(Resource):
 class Dummy(Resource):
   def get(self):
     return {"text": "Hey you're a pretty cool dude"}
+
+# SITE/sms ROUTE
+class Sms(Resource):
+  def post(self):
+    # should be set as environment variables
+    account_sid = "AC20f57cf543afba11d2b113b94d75c5a4"
+    auth_token  = "35d33baeacae5cafcbb45bbbdd2dc5b6"
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        to="+610429605291", 
+        from_="+18582391207",
+        body="Yo does this even work")
+
+    print(message.sid)

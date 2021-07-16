@@ -26,6 +26,7 @@ from website_package import routes, models
 # This is where Routes are instantiated
 api.add_resource(routes.Image, '/image/<string:img_id>')
 api.add_resource(routes.Dummy, '/dummy')
+api.add_resource(routes.Sms, '/sms')
 
 # This generates a database if one doesn't currently exist
 db.create_all()
