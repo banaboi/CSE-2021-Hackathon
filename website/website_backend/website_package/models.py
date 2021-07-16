@@ -1,7 +1,7 @@
 from website_package import db
 from flask_restx import Api, Resource, reqparse, abort, fields, marshal_with
 
-
+# Tells the database what model to use for the Image Model table (i.e. what columns it has and what values those columns should contain)
 class ImgModel(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(100), nullable=False)
@@ -11,6 +11,7 @@ class ImgModel(db.Model):
   def __repr__(self):
     return f'Image(name = {name}, url = {url}, views = {views})'
 
+# Used in routes.py, parses requests recieved by the routes 
 img_post_args = reqparse.RequestParser()
 img_post_args.add_argument('name', type=str, help='No name of image given', required=True)
 img_post_args.add_argument('url', type=str, help='No url of image given', required=True)

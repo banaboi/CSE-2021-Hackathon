@@ -1,19 +1,9 @@
-console.log("Hello!")
+console.log("Website Online!")
 
-function doFunction() {
-  // const data1 = {
-  //   "name": "Golden Retriever in a flower crown",
-  //   "url": "1",
-  //   "views": 1
-  //   }
-  
-  // const data2 = {
-  //   "name": "Hello There",
-  //   "url": "2",
-  //   "views": 100000000000
-  //   }
-  
-  const result = fetch(`http://127.0.0.1:5000/image/1`, {
+const WEBSITE_URL = 'https://c16826034f51.ngrok.io'
+
+function doFunction() {  
+  const result = fetch(`${WEBSITE_URL}/image/1`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',

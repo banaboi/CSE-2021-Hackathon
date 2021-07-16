@@ -1,6 +1,6 @@
 import requests
 
-BASE_URL = "http://127.0.0.1:5000"
+BASE_URL = "https://4fd8ef0e3912.ngrok.io"
 
 data1 = {
   "name": "Golden Retriever in a flower crown",
@@ -29,4 +29,7 @@ print(output.json())
 output = requests.get(f"{BASE_URL}/image/2")
 print(output.json())
 
-# requests.delete(f"{BASE_URL}/image/")
+output = requests.get(f"{BASE_URL}/dummy")
+print(output.json())
+
+requests.delete(f"{BASE_URL}/image/")
