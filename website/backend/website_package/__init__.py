@@ -21,7 +21,8 @@ CORS(app, origins=FRONTEND_URL, allow_headers=[
 ###########################################################################################
 
 
-from website_package import image_route, sms_route, dummy_route, models
+from website_package import models
+from website_package.routes import image_route, dummy_route, sms_route
 
 # This is where Routes are instantiated
 api.add_resource(image_route.Image, '/image/<string:img_id>')
