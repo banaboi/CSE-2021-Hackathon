@@ -15,7 +15,7 @@ resource_fields = {
 
 # SITE/image ROUTE
 class Image(Resource):
-  # GET request route
+  # GET request
   @marshal_with(resource_fields)
   def get(self, img_id):
     result = ImgModel.query.get(img_id)
@@ -23,7 +23,7 @@ class Image(Resource):
       abort(404, message="Image not found")
     return result
   
-  # POST request route
+  # POST request
   def post(self, img_id):
     args = img_post_args.parse_args()
     result = ImgModel.query.get(img_id)
@@ -34,7 +34,7 @@ class Image(Resource):
     db.session.commit()
     return {}, 200
 
-  # PUT request route, edits an image's fields
+  # PUT request, edits an image's fields
   @marshal_with(resource_fields)
   def put(self, img_id):
     args = img_put_args.parse_args()
@@ -51,7 +51,7 @@ class Image(Resource):
     db.session.commit()
     return result
 
-  # DELETE request route (very bad and doesn't work)  
+  # DELETE request (very bad and doesn't work)  
   def delete(self, img_id):
     # this is very bad, big nono, don't leave this in for production
     system("rm ./database.db")

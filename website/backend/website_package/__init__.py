@@ -2,11 +2,11 @@ from flask import Flask
 from flask_restx import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from flask_ngrok import run_with_ngrok
+#from flask_ngrok import run_with_ngrok
 
 ######## FLASK SET-UP STUFF, IF YOU'RE INTERESTED IN WHAT IT ALL DOES GIMME A SHOUT ##########
 app = Flask(__name__)
-run_with_ngrok(app)
+#run_with_ngrok(app)
 api = Api(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
