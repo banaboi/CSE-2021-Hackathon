@@ -22,10 +22,13 @@ img_put_args.add_argument('name', type=str, help='No name of image given')
 img_put_args.add_argument('url', type=str, help='No url of image given')
 img_put_args.add_argument('views', type=int, help='No views of image given')
 
+sms_text_args = reqparse.RequestParser()
+sms_text_args.add_argument('number', type=str, help='No number given')
+sms_text_args.add_argument('message', type=str, help='No message given')
 
-# this in conjunction with the "@marsha_with" decorator allows the result of a 
+# this in conjunction with the "@marshal_with" decorator allows the result of a 
 # db search to return a dictionary instead of random stuff within the routes
-resource_fields = {
+image_database_parse = {
   'id': fields.String,
   'name': fields.String,
   'url': fields.String,

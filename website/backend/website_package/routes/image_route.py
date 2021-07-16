@@ -1,12 +1,12 @@
 from website_package import db
-from website_package.models import ImgModel, img_post_args, img_put_args, resource_fields
+from website_package.models import ImgModel, img_post_args, img_put_args, image_database_parse
 from flask_restx import Resource, abort, fields, marshal_with
 from os import system
 from twilio.rest import Client
 
 class Image(Resource):
   # GET request
-  @marshal_with(resource_fields)
+  @marshal_with(image_database_parse)
   def get(self, img_id):
     result = ImgModel.query.get(img_id)
     if not result:
@@ -25,7 +25,7 @@ class Image(Resource):
     return {}, 200
 
   # PUT request, edits an image's fields
-  @marshal_with(resource_fields)
+  @marshal_with(image_database_parse)
   def put(self, img_id):
     args = img_put_args.parse_args()
     result = ImgModel.query.get(img_id)

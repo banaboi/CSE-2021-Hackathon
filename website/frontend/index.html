@@ -5,8 +5,20 @@
         <script src="frontend_code.js"></script>
     </head>
     <body>
-        <h1>Look at my cool site</h1>
-        <input type="button" value="Send Request" onclick=doFunction() />
+        <div>
+          <h1>Look at my cool site</h1>
+          <input type="button" value="Send Save Image Request" onclick=postImage() />
+          <input type="button" value="Send Get Request" onclick=getImage() />
+        </div><br><br><br>
+        <div>
+          <form>
+            <label for="phone_input">Enter Phone Number:</label><br>
+            <input type="text" id="phone_input" name="phone_input" value="+61xxxxxxxxxx"><br>
+            <label for="sms_message_input">Enter your message:</label><br>
+            <input type="text" id="sms_message_input" name="sms_message_input"><br><br>
+            <input type="button" Value="Click Here to send text" onclick=sendSMS()>
+          </form> 
+        </div>
     </body>
 
 </html>
