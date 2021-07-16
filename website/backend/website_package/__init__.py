@@ -9,7 +9,7 @@ app = Flask(__name__)
 #run_with_ngrok(app)
 api = Api(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 db = SQLAlchemy(app)
 
 BACKEND_URL = "http://127.0.0.1:5000"
@@ -21,12 +21,12 @@ CORS(app, origins=FRONTEND_URL, allow_headers=[
 ###########################################################################################
 
 
-from website_package import routes, models
+from website_package import image_route, sms_route, dummy_route, models
 
 # This is where Routes are instantiated
-api.add_resource(routes.Image, '/image/<string:img_id>')
-api.add_resource(routes.Dummy, '/dummy')
-api.add_resource(routes.Sms, '/sms')
+api.add_resource(image_route.Image, '/image/<string:img_id>')
+api.add_resource(dummy_route.Dummy, '/dummy')
+api.add_resource(sms_route.Sms, '/sms')
 
 # This generates a database if one doesn't currently exist
 db.create_all()

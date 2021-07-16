@@ -21,3 +21,13 @@ img_put_args = reqparse.RequestParser()
 img_put_args.add_argument('name', type=str, help='No name of image given')
 img_put_args.add_argument('url', type=str, help='No url of image given')
 img_put_args.add_argument('views', type=int, help='No views of image given')
+
+
+# this in conjunction with the "@marsha_with" decorator allows the result of a 
+# db search to return a dictionary instead of random stuff within the routes
+resource_fields = {
+  'id': fields.String,
+  'name': fields.String,
+  'url': fields.String,
+  'views': fields.Integer
+}
