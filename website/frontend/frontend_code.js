@@ -9,7 +9,7 @@ const dummy_image_data = {
 };
 
 function getImage() {
-    const response = fetch(`${WEBSITE_URL}/image/1`, {
+    const response = await fetch(`${WEBSITE_URL}/image/1`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -27,7 +27,7 @@ function getImage() {
 }
 
 function postImage() {
-    const response = fetch(`${WEBSITE_URL}/image/1`, {
+    const response = await fetch(`${WEBSITE_URL}/image/1`, {
         method: "POST",
         headers: {
             Accept: "application/json",
