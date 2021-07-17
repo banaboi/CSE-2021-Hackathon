@@ -77,6 +77,8 @@ class MentModel(db.Model):
   contacts = db.Column(db.String(200), nullable=False)
   auth_token = db.Column(db.Integer, nullable=True)
   students = db.relationships('Students', backref='mentor', lazy = True)
+  def __repr__(self):
+    return f'Mentor(user_name = {name}, first_name = {first_name}, last_name = {last_name}, email = {email}, password = {password}, subject = {subject}, level = {level}, contacts = {contacts}' 
   
 ment_post_args = reqparse.RequestParser()
 ment_post_args.add_argument('first_name', type=str, help='Mentor did not provide first name')
