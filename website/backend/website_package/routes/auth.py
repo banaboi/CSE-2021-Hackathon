@@ -11,8 +11,19 @@ class signIn(Resource):
         isMentor = MentModel.query.get(email)
         isStudent = StudModel.query.get(email)
         if isMentor:
-            
+            if (isMentor.password == password):
+                #return auth token with user_id and user_type
+                return { "mentor_id" : isMentor.user_id, "user_type" : 'Mentor'}, 200 
+            else:
+                abort(404, message='Incorrect password') 
+
         elif isStudent:
+
+            if (isStudent.password == password):
+                #return authentication token 
+                return { "student_id" : isStudent.user_id, "user_type" : 'Mentor'}, 200
+            else:
+                abort(404, message="Incorrect password")
 
         else: 
             abort(409, message = "Invalid Email address")

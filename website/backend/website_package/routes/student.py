@@ -23,8 +23,8 @@ class stu_info(Resource):
 
     #Get request to return the students information for a dashboard
     @marshal_with(student_database_parse)
-    def get(self, auth_token):
-        result = StudModel.query.get(auth_token)
+    def get(self, student_id):
+        result = StudModel.query.get(student_id)
         if not result:
             abort(404, message='Invalid User token')
         return {'fname' : str(result.first_name), 'edu_category' : str(result.subject), 

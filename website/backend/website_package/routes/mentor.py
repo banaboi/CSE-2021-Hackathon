@@ -6,7 +6,7 @@ from website_package import db
 class mentor_sign_up(Resource):
     #put request to add a new mentor the database
     @marshal_with(mentor_database_parse)
-    def post(sefl, mentor_email):
+    def post(self, mentor_email):
         args = ment_post_args.parse_args()
         result = MentModel.query.get(mentor_email)
         if result:
@@ -21,7 +21,7 @@ class mentor_info(Resource):
     
     #Get request to retrieve the students information for a dashboard
     @marshal_with(student_database_parse)
-    def get(self, auth_token):
+    def get(self, mentor_id):
         result = StudModel.query.get(auth_token)
         if not result:
             abort(404, message ='Invalid User Token')
