@@ -6,7 +6,7 @@ class stu_sign_up(Resource):
 
     #Post request to add new student to datbase
     @marshal_with(student_database_parse)
-    def post(self, student_email):
+    def post(self):
         args = stud_post_args.parse_args()
         result = StudModel.query.get(student_email)
         if result:

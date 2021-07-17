@@ -6,7 +6,7 @@ from website_package import db
 class mentor_sign_up(Resource):
     #put request to add a new mentor the database
     @marshal_with(mentor_database_parse)
-    def post(self, mentor_email):
+    def post(self):
         args = ment_post_args.parse_args()
         result = MentModel.query.get(mentor_email)
         if result:

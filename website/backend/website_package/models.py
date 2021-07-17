@@ -36,15 +36,16 @@ image_database_parse = {
 }
 
 class MentModel(db.Model):
+  user_id = db.Column(db.Integer, secondary_key = True)
   first_name = db.Column(db.String(100), nullable=False)
   last_name = db.Column(db.String(100), nullable=False)
+  phone = db.Column(db.Integer, nullable=False)
   email = db.Column(db.String(100), primary_key = True)
   password = db.Column(db.String(100), nullable=False)
   subject = db.Column(db.String(100), nullable=False)
   level =  db.Column(db.String(100), nullable=False)
   contacts = db.Column(db.String(200), nullable=False)
-  auth_token = db.Column(db.Integer, nullable=True)
-  #students = db.relationship('StudModel', backref='mentor_email', lazy = True)
+#  students = db.relationship('StudModel', backref='mentor', lazy = True)
   def __repr__(self):
     return f'Mentor(user_name = {name}, first_name = {first_name}, last_name = {last_name}, email = {email}, password = {password}, subject = {subject}, level = {level}, contacts = {contacts}' 
   
@@ -68,9 +69,11 @@ mentor_database_parse = {
 
 
 class StudModel(db.Model):
+  user_id = db.Column(db.Integer, secondary_key = True)
   first_name = db.Column(db.String(100), nullable=False)
   last_name = db.Column(db.String(100), nullable=False)
   email = db.Column(db.String(100), primary_key=True)
+  phone_number = db.Column(db.Integer, nullable=False)
   password = db.Column(db.String(100), nullable=False)
   subject = db.Column(db.String(100), nullable=False)
   level =  db.Column(db.String(100), nullable=False)
@@ -97,7 +100,6 @@ student_database_parse = {
     'level' : fields.String
 }
 
-
-
-class SubModel(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
+signin_post_args = reqparse.RequestParser()
+signin_post_args.add_argument('email', type=str, help='Email was not provided')
+signin_post_args.add_argument('password', type=str, help='Password was not provided')
