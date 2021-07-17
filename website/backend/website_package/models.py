@@ -35,15 +35,49 @@ image_database_parse = {
   'views': fields.Integer
 }
 
-class StudModel(db.Model):
-  user_name = db.Column(db.Integer, primary_key=True)
+class MentModel(db.Model):
+  user_id = db.Column(db.Integer, secondary_key = True)
   first_name = db.Column(db.String(100), nullable=False)
   last_name = db.Column(db.String(100), nullable=False)
-  email = db.Column(db.String(100), nullable=False)
+  phone = db.Column(db.Integer, nullable=False)
+  email = db.Column(db.String(100), primary_key = True)
   password = db.Column(db.String(100), nullable=False)
   subject = db.Column(db.String(100), nullable=False)
   level =  db.Column(db.String(100), nullable=False)
-  mentor_id = d.Column(db.Integer, db.ForeignKey('mentor_id'), nullable=True)
+  contacts = db.Column(db.String(200), nullable=False)
+#  students = db.relationship('StudModel', backref='mentor', lazy = True)
+  def __repr__(self):
+    return f'Mentor(user_name = {name}, first_name = {first_name}, last_name = {last_name}, email = {email}, password = {password}, subject = {subject}, level = {level}, contacts = {contacts}' 
+  
+ment_post_args = reqparse.RequestParser()
+ment_post_args.add_argument('first_name', type=str, help='Mentor did not provide first name')
+ment_post_args.add_argument('last_name', type=str, help='Mentor did not provide last name')
+ment_post_args.add_argument('email', type=str, help='Email is not provided')
+ment_post_args.add_argument('password', type=str, help='Mentor did not provide password')
+ment_post_args.add_argument('subject', type=str, help='Mentor did not provide Education category')
+ment_post_args.add_argument('level', type=str, help='Mentor must provide level of experience')
+
+mentor_database_parse = {
+    'user_name' : fields.String,
+    'first_name' :fields.String, 
+    'last_name' : fields.String,
+    'email' : fields.String,
+    'password' : fields.String,
+    'subject' : fields.String,
+    'level' : fields.String
+}
+
+
+class StudModel(db.Model):
+  user_id = db.Column(db.Integer, secondary_key = True)
+  first_name = db.Column(db.String(100), nullable=False)
+  last_name = db.Column(db.String(100), nullable=False)
+  email = db.Column(db.String(100), primary_key=True)
+  phone_number = db.Column(db.Integer, nullable=False)
+  password = db.Column(db.String(100), nullable=False)
+  subject = db.Column(db.String(100), nullable=False)
+  level =  db.Column(db.String(100), nullable=False)
+  #mentor_id = db.Column(db.Integer, db.ForeignKey('mentor.email'), nullable=True)
   def __repr__(self): 
     return f'Student(user name = {user_name}, first name = {first_name}, last_name = {last_name}, email = {email}, subject = {subject}, level = {level}'
 
@@ -66,37 +100,6 @@ student_database_parse = {
     'level' : fields.String
 }
 
-class MentModel(db.Model):
-  user_name = db.Column(db.Integer, primary_key=True)
-  first_name = db.Column(db.String(100), nullable=False)
-  last_name = db.Column(db.String(100), nullable=False)
-  email = db.Column(db.String(100), nullable=False)
-  password = db.Column(db.String(100), nullable=False)
-  subject = db.Column(db.String(100), nullable=False)
-  level =  db.Column(db.String(100), nullable=False)
-  contacts = db.Column(db.String(200), nullable=False)
-  auth_token = db.Column(db.Integer, nullable=True)
-  students = db.relationships('Students', backref='mentor', lazy = True)
-  def __repr__(self):
-    return f'Mentor(user_name = {name}, first_name = {first_name}, last_name = {last_name}, email = {email}, password = {password}, subject = {subject}, level = {level}, contacts = {contacts}' 
-  
-ment_post_args = reqparse.RequestParser()
-ment_post_args.add_argument('first_name', type=str, help='Mentor did not provide first name')
-ment_post_args.add_argument('last_name', type=str, help='Mentor did not provide last name')
-ment_post_args.add_argument('email', type=str, help='Email is not provided')
-ment_post_args.add_argument('password', type=str, help='Mentor did not provide password')
-ment_post_args.add_argument('subject', type=str, help='Mentor did not pro')
-ment_post_args.add_argument('level', type=str, help='Mentor must provide level of experience')
-
-mentor_database_parse = {
-    'user_name' : fields.String,
-    'first_name' :fields.String, 
-    'last_name' : fields.String,
-    'email' : fields.String,
-    'password' : fields.String,
-    'subject' : fields.String,
-    'level' : fields.String
-}
-
-class SubModel(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
+signin_post_args = reqparse.RequestParser()
+signin_post_args.add_argument('email', type=str, help='Email was not provided')
+signin_post_args.add_argument('password', type=str, help='Password was not provided')
