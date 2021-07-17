@@ -8,7 +8,7 @@ const dummy_image_data = {
     views: 1,
 };
 
-function getImage() {
+async function getImage() {
     const response = await fetch(`${WEBSITE_URL}/image/1`, {
         method: "GET",
         headers: {
@@ -26,7 +26,7 @@ function getImage() {
     }
 }
 
-function postImage() {
+async function postImage() {
     const response = await fetch(`${WEBSITE_URL}/image/1`, {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ function postImage() {
     }
 }
 
-function sendSMS() {
+async function sendSMS() {
     const dummy_sms_data = {
         number: document.getElementById("phone_input").value,
         message: document.getElementById("sms_message_input").value,
