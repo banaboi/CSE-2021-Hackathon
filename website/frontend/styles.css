@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@450&family=Ubuntu&display=swap");
+
+body {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    background-color: coral;
+}
+
+p {
+    font-family: "Ubuntu";
+    font-weight: lighter;
+    color: #8f8f8f;
+}
+
+/* Heading */
+
+/* Sections */
+.coloured-section {
+    background-color: coral;
+    color: white;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding-bottom: 4.5rem;
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-family: "Ubuntu";
+    font-size: 2.5rem;
+}
+
+.nav-item {
+    padding: 0 18px;
+}
+
+.nav-link {
+    font-family: "Ubuntu";
+}
+
+/* Title */
+
+#title {
+    overflow: hidden;
+}
+
+.container-fluid {
+    padding: 3% 15% 7%;
+}
+
+/* Title Image */
+.title-image {
+    border-radius: 1rem;
+}
+
+.form-group {
+    width: 30rem;
+    margin: 0 auto;
+    text-align: left;
+    background-color: rgb(247, 96, 96);
+    padding: 2rem;
+    border-radius: 2rem;
+}
