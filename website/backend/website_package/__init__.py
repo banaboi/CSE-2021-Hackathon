@@ -22,12 +22,14 @@ CORS(app, origins=FRONTEND_URL, allow_headers=[
 
 
 from website_package import models
-from website_package.routes import image_route, dummy_route, sms_route
+from website_package.routes import image_route, dummy_route, sms_route, student, auth
 
 # This is where Routes are instantiated
 api.add_resource(image_route.Image, '/image/<string:img_id>')
 api.add_resource(dummy_route.Dummy, '/dummy')
 api.add_resource(sms_route.Sms, '/sms')
+api.add_resource(student.stu_sign_up, '/stu_sign_up')
+api.add_resource(auth.signIn, '/signin')
 
 # This generates a database if one doesn't currently exist
 db.create_all()
